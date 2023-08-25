@@ -24,4 +24,4 @@ class Product:
 
 
 produto = Product('1', 'EA', 'FIFA', '01/01/2020', '01/01/2021', '123456', 'jogo para familia' )
-print(produto.id)
+print(produto)
