@@ -21,7 +21,3 @@ class Product:
             "must be stored according to the following instructions: "
             f"{self.storage_instructions}."
         )
-
-
-produto = Product('1', 'EA', 'FIFA', '01/01/2020', '01/01/2021', '123456', 'jogo para familia' )
-produto.__str__()
