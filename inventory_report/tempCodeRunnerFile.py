@@ -1,1 +1,3 @@
-header, *data = content
+
+teste = [1] + [2]
+print(teste)
