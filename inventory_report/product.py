@@ -21,3 +21,15 @@ class Product:
             "must be stored according to the following instructions: "
             f"{self.storage_instructions}."
         )
+
+
+# produto = {
+#     "id": "1",
+#     "product_name": "Nicotine Polacrilex",
+#     "company_name": "Target Corporation",
+#     "manufacturing_date": "2021-02-18",
+#     "expiration_date": "2023-09-17",
+#     "serial_number": "CR25 1551 4467 2549 4402 1",
+#     "storage_instructions": "instrucao 1",
+# }
+# print(produto.values())
