@@ -20,7 +20,7 @@ class SimpleReport(Report):
                 for el in stock.data:
                     if el.company_name not in self.invent:
                         self.invent[el.company_name] = set()
-                        # self.invent[el.company_name].add(el.expiration_date)
+                        self.invent[el.company_name].add(el.expiration_date)
                     else:
                         self.invent[el.company_name].add(el.expiration_date)
         return (
