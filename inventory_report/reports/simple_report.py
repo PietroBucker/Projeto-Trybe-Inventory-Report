@@ -12,21 +12,21 @@ class SimpleReport(Report):
         return
 
     def generate(self) -> str:
-        larges_inv: dict[str, int] = dict()
+        self.invent: dict[str, set[str]] = dict()
         for stock in self.stock:
             if stock.data:
                 oldest_date = SimpleReport.old_manufacturing(stock.data)
                 closest_date = SimpleReport.close_expiration(stock.data)
                 for el in stock.data:
-                    if el.company_name not in larges_inv:
-                        larges_inv[el.company_name] = 1
+                    if el.company_name not in self.invent:
+                        self.invent[el.company_name] = set()
                     else:
-                        larges_inv[el.company_name] += 1
+                        self.invent[el.company_name].add(el.product_name)
         return (
-            f"Oldest manufacturing date: {oldest_date} "
-            f"Closest expiration date: {closest_date} "
+            f"Oldest manufacturing date: {oldest_date}\n"
+            f"Closest expiration date: {closest_date}\n"
             "Company with the largest inventory: "
-            f"{max(larges_inv, key=lambda chave: larges_inv[chave])}"
+            f"{max(self.invent, key=lambda chave: len(self.invent[chave]))}\n"
         )
 
     @staticmethod
@@ -68,7 +68,7 @@ class SimpleReport(Report):
 # produto2 = Product(
 #     id="1",
 #     product_name="Nicotine Polacrilex",
-#     company_name="Corporation",
+#     company_name="Target Corporation",
 #     manufacturing_date="2022-01-18",
 #     expiration_date="2023-09-17",
 #     serial_number="CR25 1551 4467 2549 4402 1",
@@ -78,7 +78,7 @@ class SimpleReport(Report):
 # produto3 = Product(
 #     id="1",
 #     product_name="Nicotine Polacrilex",
-#     company_name="Target",
+#     company_name="Target Corporation",
 #     manufacturing_date="2021-02-18",
 #     expiration_date="2023-08-27",
 #     serial_number="CR25 1551 4467 2549 4402 1",
@@ -88,20 +88,20 @@ class SimpleReport(Report):
 # produto4 = Product(
 #     id="1",
 #     product_name="Nicotine Polacrilex",
-#     company_name="Corporation",
+#     company_name="Target Corporation",
 #     manufacturing_date="2019-02-18",
-#     expiration_date="2023-08-26",
+#     expiration_date="2023-08-27",
 #     serial_number="CR25 1551 4467 2549 4402 1",
 #     storage_instructions="instrucao 1",
 # )
 # inventory4 = Inventory()
 # inventory = Inventory([produto])
-# inventory2 = Inventory([produto3])
-# inventory3 = Inventory([produto4])
-# inventory.add_data([produto2])
+# # inventory2 = Inventory([produto3])
+# # inventory3 = Inventory([produto4])
+# # inventory.add_data([produto2])
 # teste = SimpleReport()
 # teste.add_inventory(inventory)
-# teste.add_inventory(inventory2)
-# teste.add_inventory(inventory3)
-# teste.add_inventory(inventory4)
+# # teste.add_inventory(inventory2)
+# # teste.add_inventory(inventory3)
+# # teste.add_inventory(inventory4)
 # print(teste.generate())
