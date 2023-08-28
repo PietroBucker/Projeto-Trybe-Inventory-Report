@@ -54,37 +54,6 @@ Boas-vindas ao repositório do projeto `Inventory Report`
 
 -   Usando o exemplo anterior: `git push -u origin maria-soares-lessons-learned`
 
-8. Crie um novo `Pull Request` _(PR)_
-
--   Vá até a página de _Pull Requests_ do repositório no GitHub em `<url_do_repositório>/pulls`:
-    -   Clique no botão verde _"New pull request"_
-    -   Clique na caixa de seleção _"Compare"_ e escolha a sua branch **com atenção**
--   Coloque um título para o seu _Pull Request_
-    -   Exemplo: _"Cria tela de busca"_
--   Clique no botão verde _"Create pull request"_
-
--   Adicione uma descrição para o _Pull Request_, um título nítido que o identifique, e clique no botão verde _"Create pull request"_
-
- <img width="1335" alt="Exemplo de pull request" src="https://user-images.githubusercontent.com/42356399/166255109-b95e6eb4-2503-45e5-8fb3-cf7caa0436e5.png">
-
--   Volte até a página de _Pull Requests_ do repositório no GitHub em `<url_do_repositório>/pulls` e confira que o seu _Pull Request_ está criado
-
-</details>
-
-<details>
-<summary><strong>⌨️ Durante o desenvolvimento</strong></summary>
-  <br />
-
-Faça `commits` das alterações que você fizer no código regularmente, pois assim você garante visibilidade para o time da Trybe e treina essa prática para o mercado de trabalho :) ;
-
--   Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto;
--   Os comandos que você utilizará com mais frequência são:
-    -   `git status` _(para verificar o que está em vermelho - fora do stage - e o que está em verde - no stage)_;
-    -   `git add` _(para adicionar arquivos ao stage do Git)_;
-    -   `git commit` _(para criar um commit com os arquivos que estão no stage do Git)_;
-    -   `git push -u origin nome-da-branch` _(para enviar o commit para o repositório remoto na primeira vez que fizer o `push` de uma nova branch)_;
-    -   `git push` _(para enviar o commit para o repositório remoto após o passo anterior)_.
-
 
 ## Requisitos do projeto
 
