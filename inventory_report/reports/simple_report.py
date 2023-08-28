@@ -5,29 +5,32 @@ from datetime import datetime, date
 
 
 class SimpleReport(Report):
-    stock: list[Inventory] = []
+    def __init__(self) -> None:
+        self.stock: list[Inventory] = []
 
     def add_inventory(self, inventory: Inventory) -> None:
         self.stock.append(inventory)
         return
 
     def generate(self) -> str:
-        self.invent: dict[str, set[str]] = dict()
+        self.invent: dict[str, int] = dict()
         for stock in self.stock:
             if stock.data:
                 oldest_date = SimpleReport.old_manufacturing(stock.data)
                 closest_date = SimpleReport.close_expiration(stock.data)
+
                 for el in stock.data:
                     if el.company_name not in self.invent:
-                        self.invent[el.company_name] = set()
-                        self.invent[el.company_name].add(el.expiration_date)
+                        self.invent[el.company_name] = 1
+                        # self.invent[el.company_name].add(id(el.expiration_date))
                     else:
-                        self.invent[el.company_name].add(el.expiration_date)
+                        self.invent[el.company_name] += 1
+                        # self.invent[el.company_name].add(id(el.expiration_date))
         return (
             f"Oldest manufacturing date: {oldest_date}\n"
             f"Closest expiration date: {closest_date}\n"
             "Company with the largest inventory: "
-            f"{max(self.invent, key=lambda chave: len(self.invent[chave]))}\n"
+            f"{max(self.invent, key=lambda chave: self.invent[chave])}\n"
         )
 
     @staticmethod

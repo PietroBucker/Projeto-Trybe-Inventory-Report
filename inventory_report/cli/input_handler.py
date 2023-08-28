@@ -17,16 +17,16 @@ def process_report_request(file_paths: List[str], report_type: str) -> str:
             if path.endswith(".csv"):
                 data = CsvImporter(path).import_data()
                 inventory.add_data(data)
-                report.add_inventory(inventory)
+                
                 # return report.generate()
-                break
+                continue
 
-            elif path.endswith(".json"):
+            if path.endswith(".json"):
                 data = JsonImporter(path).import_data()
                 inventory.add_data(data)
-                report.add_inventory(inventory)
                 # return report.generate()
-                break
+                continue
+        report.add_inventory(inventory)
 
         return report.generate()
     else:

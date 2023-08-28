@@ -4,9 +4,10 @@ from inventory_report.reports.simple_report import SimpleReport
 class CompleteReport(SimpleReport):
     def generate(self) -> str:
         final_string = super().generate()
-        final_string += "Stocked products by company:\n "
+        final_string += "Stocked products by company:\n"
+        print(self.invent)
         final_string += "".join(
-            [f"- {a}: {len(b)}\n" for a, b in self.invent.items()]
+            [f"- {a}: {b}\n" for a, b in self.invent.items()]
         )
         return final_string
 
