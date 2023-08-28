@@ -40,14 +40,11 @@ class JsonImporter(Importer):
 
 class CsvImporter(Importer):
     def import_data(self) -> list[Product]:
-        new_dict = dict()
         product_list = []
         with open(self.path, "r") as file:
-            content = csv.reader(file, delimiter=",", quotechar='"')
-            header, *data = content
-            for produto in data:
-                new_dict = {header[i]: produto[i] for i in range(len(header))}
-
+            content = csv.DictReader(file, delimiter=",", quotechar='"')
+            for new_dict in content:
+                # new_dict = {header[i]: row[i] for i in range(len(header))}
                 product_list.append(
                     Product(
                         id=new_dict["id"],
@@ -56,14 +53,14 @@ class CsvImporter(Importer):
                         manufacturing_date=new_dict["manufacturing_date"],
                         expiration_date=new_dict["expiration_date"],
                         serial_number=new_dict["serial_number"],
-                        storage_instructions=new_dict["storage_instructions"],
+                        storage_instructions=new_dict["storage_instructions"]
                     )
                 )
         return product_list
 
 
-teste = CsvImporter("inventory_report/data/inventory.csv")
-print(teste.import_data())
+# teste = CsvImporter("inventory_report/data/inventory.csv")
+# print(teste.import_data())
 
 
 # Não altere a variável abaixo
